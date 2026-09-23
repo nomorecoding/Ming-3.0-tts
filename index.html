@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ming-3.0-tts: Not Just Speaking, Expressing. One model, many ways to shape speech.">
+  <title>Ming-3.0-tts: Not Just Speaking, Expressing</title>
+  <link rel="icon" type="image/png" href="static/images/ant-bailing.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <img src="static/images/ant-bailing.png" class="logo" alt="Ming logo">
+      <h1 class="title is-1 publication-title">Ming-3.0-tts: Not Just Speaking, Expressing</h1>
+      <p class="tagline">One model, many ways to shape speech.</p>
+      <p class="authors">Inclusion AI, Ant Group</p>
+      <div class="buttons is-centered links">
+        <a class="button is-dark is-rounded" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
+        <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">🤗 Hugging Face</a>
+        <a class="button is-dark is-rounded" href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">🤖 ModelScope</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Featured Abilities</h2>
+    <div class="content has-text-justified">
+      <p>
+        Getting a line of speech right is rarely just a matter of reading the words. Which voice is this
+        character? How should the line land? Where does it pause, laugh or sigh? Is it still the same
+        character in another language or dialect? Today those answers are scattered across tools: hunt for a
+        reference clip that is close enough, nudge emotion and pace, splice a laugh in during post, then
+        re-check pronunciation and timbre every time the language changes. Ming-3.0-tts puts them back into a
+        single generation pass. Voice, delivery, non-verbal sounds, language, dialect and exact attributes are
+        all written into the input and combined as the line needs, so what you describe is what the model
+        performs, and what worked once can be reproduced.
+      </p>
+      <ul class="abilities">
+        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. 77.28% DSD on InstructTTSEval-ZH.</li>
+        <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform takes a sentence of direction instead of a panel of acoustic knobs, and it works on any voice, whether cloned, designed or built-in. Voice Design decides who speaks; Freeform decides how the line is said.</li>
+        <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. Best on all six NVBench <i>Single</i> metrics among the compared systems.</li>
+        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. 0.365% WER on German and 1.099% on Spanish; 6.15% CER and 98.00% dialect accuracy on Cantonese (WSYue-TTS-eval-Base).</li>
+        <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 99.00% speed accuracy and 93.3% average attribute accuracy at 0.317% WER; 72.33% emotion accuracy on CV3-Eval.</li>
+        <li>📈 <b>More abilities, and a stronger baseline.</b> Against the previous generation, Ming-omni-tts, all four Seed-TTS numbers improve: English WER drops 27.7% (2.190% → 1.584%) and Chinese WER goes from 0.870% to 0.800%, while both similarities rise. All of this runs on a 0.5B backbone reading a 12.5 Hz continuous audio tokenizer.</li>
+      </ul>
+      <p>
+        Two variants share every task and control value: <b>Ming-3.0-tts-0.5b</b>, dense and built on
+        Qwen2.5-0.5B, which all numbers on this page come from; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B
+        mixture of experts with 1B active, built on Ling V3, whose benchmarks are to follow.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Under the Hood: Every Ability Is a Token in One Sequence</h2>
+    <div class="content has-text-justified">
+      <p>
+        Target language, Freeform direction, paralinguistic tags and structured controls enter the model as
+        ordinary tokens next to the text. That is why they compose with each other and with any speaker, and
+        why adding one does not need a separate model or a second pass.
+      </p>
+    </div>
+    <figure class="figure"><img src="static/images/ming_3.0_tts.png" alt="Ming-3.0-tts architecture"></figure>
+    <div class="content has-text-justified">
+      <p>
+        The audio tokenizer is a 12.5 Hz continuous representation carrying speech, ambient sound and music in
+        one stream. At 12.5 tokens per second rather than the hundreds a discrete codec needs, the sequence
+        stays short enough for a 0.5B backbone to spend its capacity on expression.
+      </p>
+    </div>
+    <figure class="figure narrow"><img src="static/images/Ming-Audio-Tokenizer-12.5hz.png" alt="12.5 Hz continuous audio tokenizer"></figure>
+  </div>
+</section>
+
+<div id="demos"></div>
+
+<footer class="footer">
+  <div class="container is-max-desktop has-text-centered">
+    <p>
+      <a href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a> ·
+      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a> ·
+      <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>.
+      Benchmarks, limitations and the task cookbook are in the repository README.
+    </p>
+    <p class="credit">Page layout adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> template.</p>
+  </div>
+</footer>
+
+<script src="static/js/examples.js"></script>
+<script src="static/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: #2b2b2b;
+}
+
+.hero-body {
+  padding-bottom: 1.5rem;
+}
+
+.logo {
+  width: 64px;
+  margin-bottom: 0.75rem;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.tagline {
+  font-family: 'Castoro', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: #555;
+  margin-top: -0.75rem;
+}
+
+.authors {
+  margin: 1rem 0 1.25rem;
+  font-size: 1.1rem;
+}
+
+.links .button {
+  margin: 0 0.25rem;
+}
+
+.section {
+  padding: 2.5rem 1.5rem;
+}
+
+.title.is-3 {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.content ul.abilities {
+  list-style: none;
+  margin-left: 0;
+}
+
+.content ul.abilities li {
+  margin-bottom: 0.75rem;
+}
+
+.figure {
+  margin: 1rem auto 1.5rem;
+  text-align: center;
+}
+
+.figure img {
+  max-width: 100%;
+}
+
+.figure.narrow img {
+  max-width: 85%;
+}
+
+.demo-note {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table.demo {
+  font-size: 0.92rem;
+}
+
+table.demo th {
+  background: #f5f5f5;
+  white-space: nowrap;
+}
+
+table.demo td {
+  vertical-align: middle;
+}
+
+table.demo td.audio {
+  min-width: 250px;
+}
+
+table.demo audio {
+  width: 240px;
+  height: 36px;
+}
+
+table.demo code {
+  white-space: nowrap;
+}
+
+.footer {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.footer .credit {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
