@@ -12,7 +12,6 @@ window.DEMOS = [
     ],
     rows: [
       { language: "Chinese", text: "傍晚的风从山口吹过来，远处的云慢慢染成了金色。", audio: "static/audio/cloning/zh.mp3" },
-      { language: "English", text: "After lunch, we followed the mountain road to a quiet lake hidden between the hills.", audio: "static/audio/cloning/en.mp3" },
     ],
   },
   {
@@ -62,21 +61,6 @@ window.DEMOS = [
     ],
   },
   {
-    id: "paralinguistic",
-    title: "Paralinguistic Tags: Laughs and Sighs in the Script",
-    note: "The tag is written where the sound happens, and performed in the speaker's own voice.",
-    columns: [
-      { key: "tag", label: "Tag", type: "code" },
-      { key: "text", label: "Target Text" },
-      { key: "audio", label: "Result", type: "audio" },
-    ],
-    rows: [
-      { tag: "[Laughter]", text: "他们一进门就笑成一团，[Laughter]整个屋子都热闹起来了。", audio: "static/audio/paralinguistic/laughter.mp3" },
-      { tag: "[Sigh] [Cough]", text: "[Sigh]雨还是没有停，[Cough]我们恐怕只能把活动改到室内了。", audio: "static/audio/paralinguistic/sigh_cough.mp3" },
-      { tag: "[Question-huh]", text: "[Question-huh] You carried all of those boxes upstairs by yourself?", audio: "static/audio/paralinguistic/question_huh.mp3" },
-    ],
-  },
-  {
     id: "emotion",
     title: "Emotion: Say It the Way It Feels",
     note: "Set the emotion explicitly, in Chinese or English.",
@@ -107,9 +91,24 @@ window.DEMOS = [
     ],
   },
   {
+    id: "paralinguistic",
+    title: "Paralinguistic Tags: Laughs and Sighs in the Script",
+    note: "The tag is written where the sound happens, and performed in the speaker's own voice.",
+    columns: [
+      { key: "tag", label: "Tag", type: "code" },
+      { key: "text", label: "Target Text" },
+      { key: "audio", label: "Result", type: "audio" },
+    ],
+    rows: [
+      { tag: "[Laughter]", text: "他们一进门就笑成一团，[Laughter]整个屋子都热闹起来了。", audio: "static/audio/paralinguistic/laughter.mp3" },
+      { tag: "[Sigh] [Cough]", text: "[Sigh]雨还是没有停，[Cough]我们恐怕只能把活动改到室内了。", audio: "static/audio/paralinguistic/sigh_cough.mp3" },
+      { tag: "[Question-huh]", text: "[Question-huh] You carried all of those boxes upstairs by yourself?", audio: "static/audio/paralinguistic/question_huh.mp3" },
+    ],
+  },
+  {
     id: "multilingual",
     title: "Multilingual: Five New Languages",
-    note: "German, Spanish, French, Korean and Japanese join Chinese and English (heard under Zero-shot Cloning).",
+    note: "German, Spanish, French, Korean and Japanese join Chinese and English.",
     columns: [
       { key: "language", label: "Language" },
       { key: "text", label: "Target Text" },

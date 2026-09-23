@@ -21,7 +21,7 @@
       <p class="authors">Inclusion AI, Ant Group</p>
       <div class="buttons is-centered links">
         <a class="button is-dark is-rounded" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
-        <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">🤗 Hugging Face</a>
+        <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B">🤗 Hugging Face</a>
         <a class="button is-dark is-rounded" href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">🤖 ModelScope</a>
       </div>
     </div>
@@ -48,7 +48,7 @@
         <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. Best on all six NVBench <i>Single</i> metrics among the compared systems.</li>
         <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. 0.365% WER on German and 1.099% on Spanish; 6.15% CER and 98.00% dialect accuracy on Cantonese (WSYue-TTS-eval-Base).</li>
         <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 99.00% speed accuracy and 93.3% average attribute accuracy at 0.317% WER; 72.33% emotion accuracy on CV3-Eval.</li>
-        <li>📈 <b>More abilities, and a stronger baseline.</b> Against the previous generation, Ming-omni-tts, all four Seed-TTS numbers improve: English WER drops 27.7% (2.190% → 1.584%) and Chinese WER goes from 0.870% to 0.800%, while both similarities rise. All of this runs on a 0.5B backbone reading a 12.5 Hz continuous audio tokenizer.</li>
+        <li>📈 <b>More abilities, and a stronger baseline.</b> Against the previous generation, Ming-omni-tts, all four Seed-TTS numbers improve: English WER drops 27.7% (2.190% → 1.584%) and Chinese WER goes from 0.870% to 0.800%, while both similarities rise. All of this on a 0.5B backbone.</li>
       </ul>
       <p>
         Two variants share every task and control value: <b>Ming-3.0-tts-0.5b</b>, dense and built on
@@ -65,19 +65,12 @@
     <div class="content has-text-justified">
       <p>
         Target language, Freeform direction, paralinguistic tags and structured controls enter the model as
-        ordinary tokens next to the text. That is why they compose with each other and with any speaker, and
-        why adding one does not need a separate model or a second pass.
+        ordinary tokens next to the text. That is why they compose with each other and with any speaker: a
+        designed voice can take a Freeform direction, a cloned voice can laugh mid-sentence, a built-in voice
+        can switch to Cantonese. Adding one needs no separate model and no second pass.
       </p>
     </div>
     <figure class="figure"><img src="static/images/ming_3.0_tts.png" alt="Ming-3.0-tts architecture"></figure>
-    <div class="content has-text-justified">
-      <p>
-        The audio tokenizer is a 12.5 Hz continuous representation carrying speech, ambient sound and music in
-        one stream. At 12.5 tokens per second rather than the hundreds a discrete codec needs, the sequence
-        stays short enough for a 0.5B backbone to spend its capacity on expression.
-      </p>
-    </div>
-    <figure class="figure narrow"><img src="static/images/Ming-Audio-Tokenizer-12.5hz.png" alt="12.5 Hz continuous audio tokenizer"></figure>
   </div>
 </section>
 
@@ -87,7 +80,7 @@
   <div class="container is-max-desktop has-text-centered">
     <p>
       <a href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a> ·
-      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a> ·
+      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B">Hugging Face</a> ·
       <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>.
       Benchmarks, limitations and the task cookbook are in the repository README.
     </p>
