@@ -45,15 +45,15 @@
       <ul class="abilities">
         <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. 77.28% DSD on InstructTTSEval-ZH.</li>
         <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform takes a sentence of direction instead of a panel of acoustic knobs, and it works on any voice, whether cloned, designed or built-in. Voice Design decides who speaks; Freeform decides how the line is said.</li>
-        <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. Best on all six NVBench <i>Single</i> metrics among the compared systems.</li>
+        <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. Between the two variants, first place on all six NVBench <i>Single</i> metrics among the compared systems.</li>
         <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. 0.365% WER on German and 1.099% on Spanish; 6.15% CER and 98.00% dialect accuracy on Cantonese (WSYue-TTS-eval-Base).</li>
         <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 99.00% speed accuracy and 93.3% average attribute accuracy at 0.317% WER; 72.33% emotion accuracy on CV3-Eval.</li>
         <li>📈 <b>More abilities, and a stronger baseline.</b> Against the previous generation, Ming-omni-tts, all four Seed-TTS numbers improve: English WER drops 27.7% (2.190% → 1.584%) and Chinese WER goes from 0.870% to 0.800%, while both similarities rise. All of this on a 0.5B backbone.</li>
       </ul>
       <p>
         Two variants share every task and control value: <b>Ming-3.0-tts-0.5b</b>, dense and built on
-        Qwen2.5-0.5B, which all numbers on this page come from; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B
-        mixture of experts with 1B active, built on Ling V3, whose benchmarks are to follow.
+        Qwen2.5-0.5B, which the numbers above come from; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B
+        mixture of experts with 1B active, built on Ling V3. Both are benchmarked side by side in the repository README.
       </p>
     </div>
   </div>
