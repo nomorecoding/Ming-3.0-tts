@@ -1,5 +1,7 @@
 // Demo tables: the release demo set, text and controls verbatim. To add a
 // sample, drop the audio under static/audio/<section id>/ and add a row.
+// "video" (static/videos/<name>.mp4, poster static/images/posters/<name>.jpg)
+// plays above the table; a section without "columns" shows the video alone.
 window.DEMOS = [
   {
     id: "cloning",
@@ -18,6 +20,7 @@ window.DEMOS = [
     id: "voice-design",
     title: "Voice Design: Start From the Character Description",
     note: "No reference audio. The description alone decides the voice.",
+    video: "voice_design_freeform",
     columns: [
       { key: "description", label: "Description" },
       { key: "text", label: "Target Text" },
@@ -64,6 +67,7 @@ window.DEMOS = [
     id: "emotion",
     title: "Emotion: Say It the Way It Feels",
     note: "Set the emotion explicitly, in Chinese or English.",
+    video: "emotion",
     columns: [
       { key: "emotion", label: "Emotion" },
       { key: "text", label: "Target Text" },
@@ -94,6 +98,7 @@ window.DEMOS = [
     id: "paralinguistic",
     title: "Paralinguistic Tags: Laughs and Sighs in the Script",
     note: "The tag is written where the sound happens, and performed in the speaker's own voice.",
+    video: "paralinguistic",
     columns: [
       { key: "tag", label: "Tag", type: "code" },
       { key: "text", label: "Target Text" },
@@ -123,8 +128,30 @@ window.DEMOS = [
     ],
   },
   {
+    id: "cross-lingual",
+    title: "Cross-lingual Cloning: One Voice, Seven Languages",
+    note: "Each voice is cloned from a single Chinese reference clip and carries one short story across all seven languages, a line per language.",
+    video: "multilingual",
+    columns: [
+      { key: "language", label: "Language" },
+      { key: "text", label: "Target Text" },
+      { key: "lingxiaorou", label: "灵小柔", type: "audio" },
+      { key: "lingkai", label: "灵楷", type: "audio" },
+    ],
+    rows: [
+      { language: "Chinese", text: "一个故事，可以从一句话开始", lingxiaorou: "static/audio/cross-lingual/zh_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/zh_lingkai.mp3" },
+      { language: "English", text: "Then it can travel farther than you imagined", lingxiaorou: "static/audio/cross-lingual/en_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/en_lingkai.mp3" },
+      { language: "German", text: "In einer neuen Sprache findet es neue Zuhörer", lingxiaorou: "static/audio/cross-lingual/de_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/de_lingkai.mp3" },
+      { language: "Spanish", text: "Y cada versión merece sonar natural", lingxiaorou: "static/audio/cross-lingual/es_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/es_lingkai.mp3" },
+      { language: "French", text: "Sans perdre son rythme, son émotion ni son intention", lingxiaorou: "static/audio/cross-lingual/fr_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/fr_lingkai.mp3" },
+      { language: "Korean", text: "언어가 달라져도, 이야기의 마음은 이어져야 하니까요", lingxiaorou: "static/audio/cross-lingual/ko_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/ko_lingkai.mp3" },
+      { language: "Japanese", text: "そうして物語は、もっと遠くまで届いていきます", lingxiaorou: "static/audio/cross-lingual/ja_lingxiaorou.mp3", lingkai: "static/audio/cross-lingual/ja_lingkai.mp3" },
+    ],
+  },
+  {
     id: "dialects",
     title: "Dialects: The Cadence Is Part of the Meaning",
+    video: "dialects",
     columns: [
       { key: "dialect", label: "Dialect" },
       { key: "text", label: "Target Text" },
@@ -134,5 +161,11 @@ window.DEMOS = [
       { dialect: "川渝话", text: "你莫慌嘛，这个事情慢慢弄，肯定要得到好久。", audio: "static/audio/dialects/sichuan.mp3" },
       { dialect: "粤语", text: "今日天气几好，我哋食完饭一齐去海边行下啦。", audio: "static/audio/dialects/cantonese.mp3" },
     ],
+  },
+  {
+    id: "podcast",
+    title: "Podcast: Two Voices, One Conversation",
+    note: "Ming-3.0-tts-tiny. One short reference per speaker and a speaker_1 / speaker_2 script; the whole dialogue, turn-taking included, comes out of one pass.",
+    video: "podcast",
   },
 ];

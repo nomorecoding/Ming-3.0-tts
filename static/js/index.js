@@ -41,6 +41,19 @@
     return tableEl;
   }
 
+  function video(name) {
+    var figure = document.createElement("figure");
+    figure.className = "demo-video";
+    var videoEl = document.createElement("video");
+    videoEl.controls = true;
+    videoEl.preload = "none";
+    videoEl.playsInline = true;
+    videoEl.poster = "static/images/posters/" + name + ".jpg";
+    videoEl.src = "static/videos/" + name + ".mp4";
+    figure.appendChild(videoEl);
+    return figure;
+  }
+
   var root = document.getElementById("demos");
   window.DEMOS.forEach(function (demo) {
     var section = document.createElement("section");
@@ -61,10 +74,16 @@
       container.appendChild(note);
     }
 
-    var wrap = document.createElement("div");
-    wrap.className = "table-wrap";
-    wrap.appendChild(table(demo));
-    container.appendChild(wrap);
+    if (demo.video) {
+      container.appendChild(video(demo.video));
+    }
+
+    if (demo.columns) {
+      var wrap = document.createElement("div");
+      wrap.className = "table-wrap";
+      wrap.appendChild(table(demo));
+      container.appendChild(wrap);
+    }
     section.appendChild(container);
     root.appendChild(section);
   });

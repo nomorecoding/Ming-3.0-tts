@@ -68,6 +68,17 @@ body {
   margin-bottom: 1rem;
 }
 
+.demo-video {
+  margin: 0 0 1.25rem;
+}
+
+.demo-video video {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  background: #000;
+}
+
 .table-wrap {
   overflow-x: auto;
 }

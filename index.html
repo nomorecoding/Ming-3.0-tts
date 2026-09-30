@@ -43,19 +43,25 @@
         performs, and what worked once can be reproduced.
       </p>
       <ul class="abilities">
-        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. 77.28% DSD on InstructTTSEval-ZH.</li>
+        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. 80.50% DSD on InstructTTSEval-ZH (tiny), 0.6 points behind the best system compared.</li>
         <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform takes a sentence of direction instead of a panel of acoustic knobs, and it works on any voice, whether cloned, designed or built-in. Voice Design decides who speaks; Freeform decides how the line is said.</li>
         <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. Between the two variants, first place on all six NVBench <i>Single</i> metrics among the compared systems.</li>
-        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. 0.365% WER on German and 1.099% on Spanish; 6.15% CER and 98.00% dialect accuracy on Cantonese (WSYue-TTS-eval-Base).</li>
-        <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 99.00% speed accuracy and 93.3% average attribute accuracy at 0.317% WER; 72.33% emotion accuracy on CV3-Eval.</li>
-        <li>📈 <b>More abilities, and a stronger baseline.</b> Against the previous generation, Ming-omni-tts, all four Seed-TTS numbers improve: English WER drops 27.7% (2.190% → 1.584%) and Chinese WER goes from 0.870% to 0.800%, while both similarities rise. All of this on a 0.5B backbone.</li>
+        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. 0.325% WER on German and 0.725% on Spanish (tiny), the lowest among the compared systems; 6.15% CER and 98.00% dialect accuracy on Cantonese (WSYue-TTS-eval-Base).</li>
+        <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 99.00% speed accuracy and 93.30% average attribute accuracy at 0.317% WER; 72.33% emotion accuracy on CV3-Eval, and 100% / 88% on its text-related happy and sad sets (tiny).</li>
+        <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. 1.85% CER on the podcast benchmark, 0.01 points behind the best result.</li>
+        <li>📈 <b>More abilities, and a stronger baseline.</b> Against both previous-generation models, Ming-omni-tts-0.5B and 16.8B-A3B, all four Seed-TTS numbers improve: English WER drops 27.7% (2.190% → 1.584%) and Chinese WER goes from 0.870% to 0.800%, while both similarities rise. All of this on a 0.5B backbone.</li>
       </ul>
       <p>
-        Two variants share every task and control value: <b>Ming-3.0-tts-0.5b</b>, dense and built on
-        Qwen2.5-0.5B, which the numbers above come from; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B
-        mixture of experts with 1B active, built on Ling V3. Both are benchmarked side by side in the repository README.
+        Two variants: <b>Ming-3.0-tts-0.5b</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B mixture of experts with 1B active, built on Ling V3. Both cover every ability above except podcast, which is tiny only. Numbers are 0.5b unless marked tiny; both are benchmarked side by side in the repository README.
       </p>
     </div>
+  </div>
+</section>
+
+<section class="section" id="overview">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Every Ability in Two and a Half Minutes</h2>
+    <figure class="demo-video"><video controls preload="none" playsinline poster="static/images/posters/overview.jpg" src="static/videos/overview.mp4"></video></figure>
   </div>
 </section>
 
@@ -74,7 +80,40 @@
   </div>
 </section>
 
+<section class="section" id="benchmarks">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Benchmarks</h2>
+    <div class="content has-text-justified">
+      <p>
+        Content accuracy and speaker similarity on Chinese, English and the five new languages, then every
+        control benchmark, both variants against the systems compared. Full tables, the comparison with the
+        previous generation and the known limitations are in the
+        <a href="https://github.com/inclusionAI/Ming-3.0-tts#performance">repository README</a>.
+      </p>
+    </div>
+    <figure class="figure"><img src="static/images/benchmark_basic.png" alt="Basic capability: WER, CER and SIM"></figure>
+    <figure class="figure"><img src="static/images/benchmark_control.png" alt="Controllability benchmarks"></figure>
+  </div>
+</section>
+
 <div id="demos"></div>
+
+<section class="section" id="story">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">From a Line of Text to a Whole Performance</h2>
+    <div class="content has-text-justified">
+      <p>
+        The audio in this short film was generated with Ming-3.0-tts. Before sunrise, two young ants carry a precious
+        seed of sound to a distant lighthouse, so the world can hear its many voices again. A broken bridge cuts
+        the mountain road; at a forest station an old beetle keeper points them to a hidden path, and a young
+        firefly flies ahead to guide them. Beyond the forest, the sealed Gate of Star-Speech opens only to many
+        languages: English, Spanish and Japanese wake its three crystals in turn. At sunrise the seed is placed in
+        the heart of the lighthouse, it sprouts, and ribbons of gold and blue sound carry across the sea of clouds.
+      </p>
+    </div>
+    <figure class="demo-video"><video controls preload="none" playsinline poster="static/images/posters/story.jpg" src="static/videos/story.mp4"></video></figure>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container is-max-desktop has-text-centered">
