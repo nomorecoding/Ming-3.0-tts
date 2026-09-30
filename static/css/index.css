@@ -118,3 +118,13 @@ table.demo code {
   color: #888;
   margin-top: 0.5rem;
 }
+
+.title.is-4 {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.video-caption {
+  color: #555;
+  font-size: 0.92rem;
+  text-align: justify;
+}
