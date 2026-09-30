@@ -43,15 +43,15 @@
         performs, and what worked once can be reproduced.
       </p>
       <ul class="abilities">
-        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. 80.50% DSD on InstructTTSEval-ZH (tiny), 0.6 points behind the best system compared.</li>
+        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. On InstructTTSEval-ZH, tiny ranks <b>#2</b> in the industry on the average (74.30%), APS (83.80%) and DSD (80.50%, 0.6 points from SOTA).</li>
         <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform takes a sentence of direction instead of a panel of acoustic knobs, and it works on any voice, whether cloned, designed or built-in. Voice Design decides who speaks; Freeform decides how the line is said.</li>
-        <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. Between the two variants, first place on all six NVBench <i>Single</i> metrics among the compared systems.</li>
-        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. 0.325% WER on German and 0.725% on Spanish (tiny), the lowest among the compared systems; 6.15% CER and 98.00% dialect accuracy on Cantonese (WSYue-TTS-eval-Base).</li>
-        <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 99.00% speed accuracy and 93.30% average attribute accuracy at 0.317% WER; 72.33% emotion accuracy on CV3-Eval, and 100% / 88% on its text-related happy and sad sets (tiny).</li>
-        <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. 1.85% CER on the podcast benchmark, 0.01 points behind the best result.</li>
+        <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. On NVBench, the two variants are <b>SOTA on all six single-tag metrics</b> (Chinese and English CER, PCER, OCER), and tiny is <b>SOTA on all three English multi-tag metrics</b>.</li>
+        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. <b>SOTA</b> German (0.325%) and Spanish (0.725%) WER (tiny); <b>SOTA</b> Sichuanese CER and dialect accuracy on both WSC-Eval-TTS sets; <b>SOTA</b> Cantonese CER (6.15%) and dialect accuracy (98.00%) on WSYue-TTS-eval-Base (0.5B).</li>
+        <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 0.5B is <b>SOTA</b> on average attribute accuracy (93.30%), pitch accuracy (86.00%) and WER (0.317%), and <b>#2</b> on speed (99.00%). On CV3 emotion, tiny is <b>SOTA</b> on text-related Happy (100%) and Sad (88%) and 0.5B on Angry (94%); tiny's 74.30% average ranks <b>#2</b>.</li>
+        <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. <b>SOTA</b> 1.85% CER on the podcast benchmark (tiny).</li>
       </ul>
       <p>
-        Two variants: <b>Ming-3.0-tts-0.5B</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B mixture of experts with 1B active, built on Ling V3. Both cover every ability above except podcast, which is tiny only. Numbers are 0.5B unless marked tiny; both are benchmarked side by side in the repository README.
+        Two variants: <b>Ming-3.0-tts-0.5B</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B mixture of experts with 1B active, built on Ling V3. Both cover every ability above except podcast, which is tiny only; both are benchmarked side by side in the repository README.
       </p>
     </div>
   </div>
@@ -103,8 +103,8 @@
     <div class="content has-text-justified">
       <p>
         Content accuracy and speaker similarity on Chinese, English and the five new languages, then every
-        control benchmark, both variants against the systems compared. Full tables, the comparison with the
-        previous generation and the known limitations are in the
+        control benchmark, both variants against the systems compared. Full tables, per-metric industry
+        ranks and the known limitations are in the
         <a href="https://github.com/inclusionAI/Ming-3.0-tts#performance">repository README</a>.
       </p>
     </div>
