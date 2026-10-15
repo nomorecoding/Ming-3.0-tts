@@ -21,7 +21,7 @@
       <p class="authors">Inclusion AI, Ant Group</p>
       <div class="buttons is-centered links">
         <a class="button is-dark is-rounded" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
-        <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B">🤗 Hugging Face</a>
+        <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">🤗 Hugging Face</a>
         <a class="button is-dark is-rounded" href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">🤖 ModelScope</a>
       </div>
     </div>
@@ -34,66 +34,46 @@
     <div class="content has-text-justified">
       <p>
         Getting a line of speech right is rarely just a matter of reading the words. Which voice is this
-        character? How should the line land? Where does it pause, laugh or sigh? Is it still the same
-        character in another language or dialect? Today those answers are scattered across tools: hunt for a
-        reference clip that is close enough, nudge emotion and pace, splice a laugh in during post, then
-        re-check pronunciation and timbre every time the language changes. Ming-3.0-tts puts them back into a
-        single generation pass. Voice, delivery, non-verbal sounds, language, dialect and exact attributes are
-        all written into the input and combined as the line needs, so what you describe is what the model
-        performs, and what worked once can be reproduced.
+        character? How should the line land? Where does it pause, laugh or sigh? Is it still the same character
+        in another language or dialect? Today those answers are scattered across tools: hunt for a reference
+        clip that is close enough, nudge emotion and pace, splice a laugh in during post, then re-check
+        pronunciation and timbre every time the language changes. Ming-3.0-tts brings voice, delivery,
+        non-verbal sounds, language, dialect and attribute controls into one speech-generation framework.
       </p>
       <ul class="abilities">
-        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four new English ones, or clone from a short reference. On InstructTTSEval-ZH, tiny ranks <b>#2</b> in the industry on the average (74.30%), APS (83.80%) and DSD (80.50%, 0.6 points from SOTA).</li>
-        <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform takes a sentence of direction instead of a panel of acoustic knobs, and it works on any voice, whether cloned, designed or built-in. Voice Design decides who speaks; Freeform decides how the line is said.</li>
+        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 100+ built-in Chinese voices and four English ones, or clone from a short reference. On InstructTTSEval-ZH, tiny ranks <b>#2</b> among the models compared below on average ACC (74.30%), APS (83.80%) and DSD (80.50%).</li>
+        <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform takes a sentence of direction instead of a panel of acoustic knobs. Voice Design decides who speaks; Freeform decides how the line is said.</li>
         <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Write them where they happen, in Chinese or English, and the model performs them in the speaker's own voice instead of leaving them for post. On NVBench, the two variants are <b>SOTA on all six single-tag metrics</b> (Chinese and English CER, PCER, OCER), and tiny is <b>SOTA on all three English multi-tag metrics</b>.</li>
-        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. <b>SOTA</b> German (0.325%) and Spanish (0.725%) WER (tiny); <b>SOTA</b> Sichuanese CER and dialect accuracy on both WSC-Eval-TTS sets; <b>SOTA</b> Cantonese CER (6.15%) and dialect accuracy (98.00%) on WSYue-TTS-eval-Base (0.5B).</li>
-        <li>🎚️ <b>Exact when it has to be.</b> For announcements, narration and batch jobs, set emotion, speed, pitch and volume as explicit values and get the same result every time. 0.5B is <b>SOTA</b> on average attribute accuracy (93.30%), pitch accuracy (86.00%) and WER (0.317%), and <b>#2</b> on speed (99.00%). On CV3 emotion, tiny is <b>SOTA</b> on text-related Happy (100%) and Sad (88%) and 0.5B on Angry (94%); tiny's 74.30% average ranks <b>#2</b>.</li>
+        <li>🌐 <b>One character, seven languages, two dialects.</b> Chinese, English, German, Spanish, French, Korean and Japanese, plus Sichuanese and Cantonese, without rebuilding the voice for each one. <b>SOTA</b> German (0.325%) and Spanish (0.725%) WER (tiny); <b>SOTA</b> Sichuanese CER and dialect accuracy on both WSC-Eval-TTS sets; <b>SOTA</b> Cantonese CER (6.15%) and dialect accuracy (98.00%) on WSYue-TTS-eval-Base (0.5b).</li>
+        <li>🎚️ <b>Control when it matters.</b> For announcements, narration and batch jobs, choose supported emotion, speed, pitch and volume settings for repeatable control. 0.5b is <b>SOTA</b> on average attribute accuracy (93.30%), pitch accuracy (86.00%) and WER (0.317%), and <b>#2</b> on speed (99.00%). On CV3 emotion, tiny is <b>SOTA</b> on text-related Happy (100%) and Sad (88%) and 0.5b on Angry (94%); tiny's 74.30% average ranks <b>#2</b>.</li>
         <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. <b>SOTA</b> 1.85% CER on the podcast benchmark (tiny).</li>
       </ul>
       <p>
-        Two variants: <b>Ming-3.0-tts-0.5B</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B mixture of experts with 1B active, built on Ling V3. Both cover every ability above except podcast, which is tiny only; both are benchmarked side by side in the repository README.
+        Two variants: <b>Ming-3.0-tts-0.5b</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B mixture of experts with 1B active, built on Ling V3. Both cover every ability above except podcast, which is tiny only; both are benchmarked side by side in the repository README.
       </p>
     </div>
   </div>
 </section>
 
-<section class="section" id="story">
+<section class="section" id="video">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">A Short Film, Voiced by Ming-3.0-tts</h2>
-    <figure class="demo-video"><video controls preload="none" playsinline poster="static/images/posters/story.jpg" src="static/videos/story.mp4"></video></figure>
-    <div class="content has-text-justified">
-      <p>
-        The audio in this short film was generated with Ming-3.0-tts. Before sunrise, two young ants carry a
-        precious seed of sound to a distant lighthouse, so the world can hear its many voices again. A broken
-        bridge cuts the mountain road; at a forest station an old beetle keeper points them to a hidden path, and
-        a young firefly flies ahead to guide them. Beyond the forest, the sealed Gate of Star-Speech opens only to
-        many languages: English, Spanish and Japanese wake its three crystals in turn. At sunrise the seed is
-        placed in the heart of the lighthouse, it sprouts, and ribbons of gold and blue sound carry across the sea
-        of clouds.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="overview">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Every Ability in Two and a Half Minutes</h2>
-    <figure class="demo-video"><video controls preload="none" playsinline poster="static/images/posters/overview.jpg" src="static/videos/overview.mp4"></video></figure>
+    <h2 class="title is-3">Demo Video</h2>
+    <figure class="demo-video"><video controls preload="none" playsinline poster="static/images/posters/tts4.jpg" src="static/videos/tts4.mp4"></video></figure>
   </div>
 </section>
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Under the Hood: Every Ability Is a Token in One Sequence</h2>
+    <h2 class="title is-3">Under the Hood: One Sequence, Many Controls</h2>
     <div class="content has-text-justified">
       <p>
         Target language, Freeform direction, paralinguistic tags and structured controls enter the model as
-        ordinary tokens next to the text. That is why they compose with each other and with any speaker: a
-        designed voice can take a Freeform direction, a cloned voice can laugh mid-sentence, a built-in voice
-        can switch to Cantonese. Adding one needs no separate model and no second pass.
+        ordinary tokens next to the text. These cues share the model's prompt format. The public APIs expose
+        task-specific inputs, shown in the <a
+        href="https://github.com/inclusionAI/Ming-3.0-tts#cookbook">Cookbook</a>.
       </p>
     </div>
-    <figure class="figure"><img src="static/images/ming_3.0_tts.png" alt="Ming-3.0-tts architecture"></figure>
+    <figure class="figure"><img src="static/images/ming-3.0-tts.png" alt="Ming-3.0-tts architecture"></figure>
   </div>
 </section>
 
@@ -119,7 +99,7 @@
   <div class="container is-max-desktop has-text-centered">
     <p>
       <a href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a> ·
-      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B">Hugging Face</a> ·
+      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a> ·
       <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>.
       Benchmarks, limitations and the task cookbook are in the repository README.
     </p>
