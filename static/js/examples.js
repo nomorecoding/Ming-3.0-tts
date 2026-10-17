@@ -4,7 +4,7 @@ window.DEMOS = [
   {
     id: "cloning",
     title: "Zero-shot Cloning: Any Voice From a Short Reference",
-    note: "The voice comes from a few seconds of reference audio; no control is set.",
+    note: "Chinese or English, from a short reference. This call does not take emotion, dialect, speed or tags.",
     columns: [
       { key: "language", label: "Language" },
       { key: "text", label: "Target Text" },
@@ -17,7 +17,7 @@ window.DEMOS = [
   {
     id: "voice-design",
     title: "Voice Design: Start From the Character Description",
-    note: "No reference audio. The description alone decides the voice.",
+    note: "No reference audio. The description is not combined with a freeform instruction, emotion, dialect, speed or tags.",
     columns: [
       { key: "description", label: "Description" },
       { key: "text", label: "Target Text" },
@@ -32,7 +32,7 @@ window.DEMOS = [
   {
     id: "built-in-voices",
     title: "Built-in Voices: Go Straight to the First Line",
-    note: "100+ built-in Chinese character voices and four new English ones, with no reference audio or description.",
+    note: "479 built-in Chinese voices and five English ones. No reference audio. A built-in voice is not combined with emotion, dialect, freeform or tags.",
     columns: [
       { key: "voice", label: "Voice", type: "code" },
       { key: "text", label: "Target Text" },
@@ -48,7 +48,7 @@ window.DEMOS = [
   {
     id: "freeform",
     title: "Freeform: Direction in Everyday Words",
-    note: "Instructions no control vocabulary enumerates: character, accent, the arc of a line, the shape of a pause.",
+    note: "One instruction, on its own task. On 0.5b it can follow a reference clip or stand alone; tiny always needs the reference clip. Not combined with voice design, a built-in voice, emotion, dialect or attribute controls.",
     columns: [
       { key: "instruction", label: "Instruction" },
       { key: "text", label: "Target Text" },
@@ -63,7 +63,7 @@ window.DEMOS = [
   {
     id: "emotion",
     title: "Emotion: Say It the Way It Feels",
-    note: "Set the emotion explicitly, in Chinese or English.",
+    note: "One label: 高兴, 悲伤, 愤怒, 恐惧, 厌恶, 惊讶, 中性. The line may be Chinese or English. Not combined with speed, pitch, volume, dialect or tags.",
     columns: [
       { key: "emotion", label: "Emotion" },
       { key: "text", label: "Target Text" },
@@ -78,7 +78,7 @@ window.DEMOS = [
   {
     id: "attributes",
     title: "Speed, Pitch and Volume: Exact and Repeatable",
-    note: "Same text and voice; only the speed moves, with pitch and volume held at 中. No speed-up in post.",
+    note: "Speed, pitch and volume are set together. This task does not take emotion, dialect or a target language.",
     columns: [
       { key: "controls", label: "Controls", type: "code" },
       { key: "text", label: "Target Text" },
@@ -93,7 +93,7 @@ window.DEMOS = [
   {
     id: "paralinguistic",
     title: "Paralinguistic Tags: Laughs and Sighs in the Script",
-    note: "The tag is written where the sound happens, and performed in the speaker's own voice.",
+    note: "Inline tags on a cloned voice, Chinese or English only. Not combined with emotion, dialect, freeform, voice design or a built-in voice.",
     columns: [
       { key: "tag", label: "Tag", type: "code" },
       { key: "text", label: "Target Text" },
@@ -108,7 +108,7 @@ window.DEMOS = [
   {
     id: "multilingual",
     title: "Multilingual: Five New Languages",
-    note: "German, Spanish, French, Korean and Japanese join Chinese and English.",
+    note: "One of German, Spanish, French, Korean or Japanese per call, from a reference clip. This task does not take emotion, dialect or tags.",
     columns: [
       { key: "language", label: "Language" },
       { key: "text", label: "Target Text" },
@@ -125,7 +125,7 @@ window.DEMOS = [
   {
     id: "cross-lingual",
     title: "Cross-lingual Cloning: One Voice, Seven Languages",
-    note: "Each voice is cloned from a single Chinese reference clip and carries one short story across all seven languages, a line per language.",
+    note: "Each voice is cloned from a single Chinese reference clip, one language per call: Chinese and English on cloning, the other five on the multilingual task. No dialect, emotion or tags on these calls.",
     columns: [
       { key: "language", label: "Language" },
       { key: "text", label: "Target Text" },
@@ -145,6 +145,7 @@ window.DEMOS = [
   {
     id: "dialects",
     title: "Dialects: The Cadence Is Part of the Meaning",
+    note: "川渝话 or 粤语 on a reference voice. This task takes no target language, and it does not take emotion, speed or tags.",
     columns: [
       { key: "dialect", label: "Dialect" },
       { key: "text", label: "Target Text" },
