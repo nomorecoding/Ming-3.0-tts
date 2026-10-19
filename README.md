@@ -4,7 +4,9 @@ Source of the project page for [Ming-3.0-tts](https://github.com/inclusionAI/Min
 
 ## Samples
 
-The sample tabs are data, not HTML: edit `static/js/examples.js`. Each section becomes one tab; its `title` is split at `": "` into the tab name and the panel headline. Put the audio (mp3 keeps the page light) under `static/audio/<section id>/` and point the row's audio column at it. A section with more than one audio column is shown as a matrix, one row per line of text. Rows without audio render without a player.
+Sample text, controls and audio paths live in `static/js/examples.js`, one section per task. Put the audio (mp3 keeps the page light) under `static/audio/<section id>/` and point the row's audio column at it.
+
+The All samples tabs list every section in full. `index.html` decides which samples the story sections above them show. A grid such as `<div class="samples" data-samples="freeform:0,1 emotion:2">` takes rows 0 and 1 of `freeform` and row 2 of `emotion`, one card each, and `<p data-note="freeform">` prints that section's `note`. `<div data-matrix="cross-lingual">` renders a section with several audio columns as a matrix, followed by its `note`. Each card in a story grid links to `#<section id>`, which opens that section's tab and scrolls to it, so page section ids must not reuse a section id from `examples.js`. Rows without audio render without a player.
 
 After adding or replacing audio, regenerate the waveforms (needs `ffmpeg`):
 

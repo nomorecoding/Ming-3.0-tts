@@ -1,4 +1,4 @@
-// Page behaviour: waveform players, the sample tabs built from window.DEMOS
+// Page behaviour: waveform players, the samples and tabs built from window.DEMOS
 // (static/js/examples.js), figure zoom, the download snippet and the nav.
 (function () {
   "use strict";
@@ -64,10 +64,10 @@
 
   function mountPlayer(root, src, title) {
     var info = PEAKS[src] || {};
-    var count = root.classList.contains("player-lg") ? 72 : root.classList.contains("player-sm") ? 36 : 56;
+    var count = root.classList.contains("player-sm") ? 36 : 56;
     var levels = resample(info.p, count);
     var duration = info.d || 0;
-    var card = root.closest(".sample, .matrix-row, .hero-card");
+    var card = root.closest(".sample, .matrix-row");
     var audio = null;
     var frame = 0;
     var label = title || "sample";
@@ -177,14 +177,34 @@
     mountPlayer(node, node.dataset.src, node.dataset.title);
   });
 
-  // Sample tabs
-  var tabList = document.getElementById("tabs");
-  var panelRoot = document.getElementById("panels");
-  var tabs = [];
-  var panels = {};
+  // Samples. In the story sections, data-samples="<section id>:<row>,<row> ..." picks rows
+  // from DEMOS into a grid, data-matrix="<section id>" renders a section with several audio
+  // columns and data-note="<section id>" shows its note. The tabs list every section.
+  var TASK_NAMES = {
+    cloning: "Zero-shot cloning",
+    "voice-design": "Voice design",
+    "built-in-voices": "Built-in voices",
+    freeform: "Director mode",
+    emotion: "Emotion",
+    attributes: "Speed, pitch and volume",
+    paralinguistic: "Paralinguistic tags",
+    multilingual: "Multilingual",
+    "cross-lingual": "Cross-lingual cloning",
+    dialects: "Dialects",
+  };
+  var demos = {};
+  DEMOS.forEach(function (demo) { demos[demo.id] = demo; });
 
-  function sampleCard(demo, row, audioColumn) {
+  function taskName(demo) { return TASK_NAMES[demo.id] || demo.title.split(": ")[0]; }
+  function audioColumns(demo) { return demo.columns.filter(function (c) { return c.type === "audio"; }); }
+
+  function sampleCard(demo, row, linked) {
     var card = el("article", "sample");
+    if (linked) {
+      var link = el("a", "task-chip", taskName(demo));
+      link.href = "#" + demo.id;
+      card.appendChild(link);
+    }
     var meta = el("dl", "sample-meta");
     demo.columns.forEach(function (column) {
       if (column.type === "audio" || column.key === "text" || !row[column.key]) return;
@@ -197,20 +217,22 @@
     var text = el("p", "sample-text");
     fillText(text, row.text);
     card.appendChild(text);
-    if (row[audioColumn.key]) {
+    var src = row[audioColumns(demo)[0].key];
+    if (src) {
       var player = el("div", "player");
       card.appendChild(player);
-      mountPlayer(player, row[audioColumn.key], demo.title.split(":")[0] + " sample");
+      mountPlayer(player, src, taskName(demo) + " sample");
     }
     return card;
   }
 
-  function matrix(demo, audioColumns) {
+  function matrix(demo) {
     var lead = demo.columns[0];
+    var voices = audioColumns(demo);
     var box = el("div", "matrix");
     var head = el("div", "matrix-row matrix-head label");
     head.append(el("span", "", lead.label), el("span", "", "Target Text"));
-    audioColumns.forEach(function (c) { head.appendChild(el("span", "", c.label)); });
+    voices.forEach(function (c) { head.appendChild(el("span", "", c.label)); });
     box.appendChild(head);
     demo.rows.forEach(function (row) {
       var line = el("div", "matrix-row");
@@ -218,7 +240,7 @@
       var text = el("p", "matrix-text");
       fillText(text, row.text);
       line.appendChild(text);
-      audioColumns.forEach(function (c) {
+      voices.forEach(function (c) {
         var cell = el("div", "matrix-cell");
         cell.appendChild(el("span", "matrix-cell-label", c.label));
         line.appendChild(cell);
@@ -234,6 +256,32 @@
     });
     return box;
   }
+
+  document.querySelectorAll("[data-samples]").forEach(function (grid) {
+    grid.dataset.samples.trim().split(/\s+/).forEach(function (spec) {
+      var parts = spec.split(":");
+      var demo = demos[parts[0]];
+      if (!demo) return;
+      parts[1].split(",").forEach(function (i) {
+        if (demo.rows[+i]) grid.appendChild(sampleCard(demo, demo.rows[+i], true));
+      });
+    });
+  });
+  document.querySelectorAll("[data-matrix]").forEach(function (root) {
+    var demo = demos[root.dataset.matrix];
+    if (!demo) return;
+    root.appendChild(matrix(demo));
+    if (demo.note) root.appendChild(el("p", "fine", demo.note));
+  });
+  document.querySelectorAll("[data-note]").forEach(function (node) {
+    var demo = demos[node.dataset.note];
+    if (demo) node.textContent = demo.note || "";
+  });
+
+  var tabList = document.getElementById("tabs");
+  var panelRoot = document.getElementById("panels");
+  var tabs = [];
+  var panels = {};
 
   function select(id, focus) {
     if (!panels[id]) return;
@@ -255,10 +303,9 @@
   }
 
   DEMOS.forEach(function (demo, i) {
-    var name = demo.title.split(": ")[0];
     var headline = demo.title.split(": ").slice(1).join(": ") || demo.title;
     var tab = el("button", "tab");
-    tab.append(el("span", "tab-no", String(i + 1).padStart(2, "0")), el("span", "", name));
+    tab.append(el("span", "tab-no", String(i + 1).padStart(2, "0")), el("span", "", taskName(demo)));
     tab.type = "button";
     tab.id = "tab-" + demo.id;
     tab.dataset.id = demo.id;
@@ -278,12 +325,11 @@
     var head = el("div", "panel-head");
     head.append(el("h3", "", headline), el("p", "", demo.note || ""));
     panel.appendChild(head);
-    var audioColumns = demo.columns.filter(function (c) { return c.type === "audio"; });
-    if (audioColumns.length > 1) {
-      panel.appendChild(matrix(demo, audioColumns));
+    if (audioColumns(demo).length > 1) {
+      panel.appendChild(matrix(demo));
     } else {
       var grid = el("div", "samples");
-      demo.rows.forEach(function (row) { grid.appendChild(sampleCard(demo, row, audioColumns[0])); });
+      demo.rows.forEach(function (row) { grid.appendChild(sampleCard(demo, row, false)); });
       panel.appendChild(grid);
     }
     panelRoot.appendChild(panel);
@@ -299,22 +345,19 @@
     select(tabs[(next + tabs.length) % tabs.length].dataset.id, true);
   });
 
-  document.addEventListener("click", function (e) {
-    var link = e.target.closest("[data-tab]");
-    if (link) select(link.dataset.tab);
-  });
-
+  // #<section id> opens that tab; #abilities is the old name of #voices.
+  var ALIASES = { abilities: "voices" };
   function routeHash(initial) {
     var id = decodeURIComponent(location.hash.slice(1));
-    var target = panels[id] ? document.getElementById("listen") : id && document.getElementById(id);
-    if (!target) return;
-    if (panels[id]) select(id);
-    else if (!initial) return;
+    var tab = panels[id];
+    var target = tab ? document.getElementById("listen") : document.getElementById(ALIASES[id] || id);
+    if (!target || (!initial && !tab && !ALIASES[id])) return;
+    if (tab) select(id);
     var go = function () {
       target.scrollIntoView({ behavior: initial ? "instant" : "smooth" });
       if (initial) requestAnimationFrame(revealInView);
     };
-    // The browser jumps to the fragment before the panels above it are built, and a
+    // The browser jumps to the fragment before the samples above it are built, and a
     // scroll issued before "load" is undone by its own fragment handling.
     if (initial && document.readyState !== "complete") window.addEventListener("load", go, { once: true });
     else go();
@@ -397,13 +440,10 @@
 
   // Nav and reveal-on-scroll
   var nav = document.getElementById("nav");
-  var hero = document.getElementById("top");
   var ticking = false;
   function updateNav() {
     ticking = false;
-    var pastHero = hero.getBoundingClientRect().bottom <= nav.offsetHeight;
     nav.classList.toggle("is-scrolled", window.scrollY > 8);
-    nav.classList.toggle("is-solid", pastHero);
   }
   window.addEventListener("scroll", function () {
     if (!ticking) { ticking = true; requestAnimationFrame(updateNav); }

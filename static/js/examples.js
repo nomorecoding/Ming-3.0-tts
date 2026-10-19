@@ -17,7 +17,7 @@ window.DEMOS = [
   {
     id: "voice-design",
     title: "Voice Design: Start From the Character Description",
-    note: "No reference audio. The description is not combined with a freeform instruction, emotion, dialect, speed or tags.",
+    note: "No reference audio. The description is not combined with a director-mode instruction, emotion, dialect, speed or tags.",
     columns: [
       { key: "description", label: "Description" },
       { key: "text", label: "Target Text" },
@@ -32,7 +32,7 @@ window.DEMOS = [
   {
     id: "built-in-voices",
     title: "Built-in Voices: Go Straight to the First Line",
-    note: "479 built-in Chinese voices and five English ones. No reference audio. A built-in voice is not combined with emotion, dialect, freeform or tags.",
+    note: "479 built-in Chinese voices and five English ones. No reference audio. A built-in voice is not combined with emotion, dialect, director mode or tags.",
     columns: [
       { key: "voice", label: "Voice", type: "code" },
       { key: "text", label: "Target Text" },
@@ -47,7 +47,7 @@ window.DEMOS = [
   },
   {
     id: "freeform",
-    title: "Freeform: Direction in Everyday Words",
+    title: "Director Mode: Direction in Everyday Words",
     note: "One instruction, on its own task. On 0.5b it can follow a reference clip or stand alone; tiny always needs the reference clip. Not combined with voice design, a built-in voice, emotion, dialect or attribute controls.",
     columns: [
       { key: "instruction", label: "Instruction" },
@@ -55,6 +55,8 @@ window.DEMOS = [
       { key: "audio", label: "Result", type: "audio" },
     ],
     rows: [
+      { instruction: "先明显吃惊，随后带着不敢相信的疑问，重读数量词。", text: "你说这一整座温室，居然只用了三天就建好了？", audio: "static/audio/freeform/greenhouse_surprise.mp3" },
+      { instruction: "Sound angry but controlled. Stress the accusation and make the final question sharp, without shouting.", text: "You changed the plan without telling anyone. How were we supposed to know what to do?", audio: "static/audio/freeform/controlled_anger.mp3" },
       { instruction: "Perform this as a mysterious fantasy narrator with a low pitch and dramatic pauses.", text: "Beyond the northern ridge lies a city that vanished from every map.", audio: "static/audio/freeform/fantasy_narrator.mp3" },
       { instruction: "Speak in a warm, intimate storytelling voice, with a gentle pace and a hint of nostalgia.", text: "The old radio crackled softly as the storm moved across the valley.", audio: "static/audio/freeform/storyteller.mp3" },
       { instruction: "Use a restrained British accent, beginning in surprise and settling into quiet relief.", text: "I honestly did not expect to see you standing here tonight.", audio: "static/audio/freeform/surprise_relief.mp3" },
@@ -93,7 +95,7 @@ window.DEMOS = [
   {
     id: "paralinguistic",
     title: "Paralinguistic Tags: Laughs and Sighs in the Script",
-    note: "Inline tags on a cloned voice, Chinese or English only. Not combined with emotion, dialect, freeform, voice design or a built-in voice.",
+    note: "Inline tags on a cloned voice, Chinese or English only. Not combined with emotion, dialect, director mode, voice design or a built-in voice.",
     columns: [
       { key: "tag", label: "Tag", type: "code" },
       { key: "text", label: "Target Text" },
