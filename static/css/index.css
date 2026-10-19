@@ -29,8 +29,35 @@ body {
   font-size: 1.1rem;
 }
 
+.highlight {
+  display: inline-block;
+  margin: 0 0 1.25rem;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  background: #f3f0ff;
+  color: #3b2a7a;
+  font-size: 0.98rem;
+}
+
+.highlight span {
+  white-space: nowrap;
+}
+
 .links .button {
   margin: 0 0.25rem;
+}
+
+.leaderboard-wrap {
+  margin-bottom: 1rem;
+}
+
+table.leaderboard td.num {
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.leaderboard td:last-child {
+  white-space: nowrap;
 }
 
 .section {

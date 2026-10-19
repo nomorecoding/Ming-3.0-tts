@@ -19,6 +19,10 @@
       <h1 class="title is-2 publication-title">Ming-3.0-tts: Multilingual Speech Synthesis with Paralinguistic and Free-form Control</h1>
       <p class="tagline">One model, many ways to shape speech.</p>
       <p class="authors">Inclusion AI, Ant Group</p>
+      <p class="highlight">🏆 <a href="#benchmarks">Artificial Analysis</a>, October 2026:
+        <span><b>#1 open-weights</b> on Controlled Voice</span> ·
+        <span><b>#1 overall</b> on Pronunciation Robustness</span> ·
+        <span><b>#3 open-weights</b> on Provider Voice</span></p>
       <div class="buttons is-centered links">
         <a class="button is-dark is-rounded" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
         <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">🤗 Hugging Face</a>
@@ -42,15 +46,15 @@
         are not combined in a single call.
       </p>
       <ul class="abilities">
-        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 479 built-in Chinese voices and five English ones, also with no audio. Or clone from a short reference. These are three separate calls: a description, a built-in name and a reference clip are not combined, and none of these calls also takes emotion, dialect, speed or a freeform instruction. On InstructTTSEval-ZH, tiny ranks <b>#2</b> among the models compared below on average ACC (75.37%), APS (85.10%) and DSD (79.90%).</li>
+        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 479 built-in Chinese voices and five English ones, also with no audio. Or clone from a short reference. These are three separate calls: a description, a built-in name and a reference clip are not combined, and none of these calls also takes emotion, dialect, speed or a freeform instruction. On InstructTTSEval-ZH, tiny ranks <b>#2</b> among the compared models on average ACC (75.37%), APS (85.10%) and DSD (79.90%).</li>
         <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform is its own task: one instruction, not a voice-design description and not a built-in voice. On 0.5b the instruction can follow a reference clip or, with no reference, choose the voice; tiny always needs the reference clip. It does not take emotion, dialect, speed, pitch, volume or inline tags.</li>
         <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. They belong to Chinese or English cloning: written where they happen, performed in that reference speaker's voice. They are not accepted on voice design, built-in voices, dialect, emotion, attribute control, or the five new languages. On NVBench, 0.5b is <b>SOTA</b> on Chinese single-tag CER (2.70), and the two variants <b>tie for SOTA</b> on Chinese single-tag OCER (3.20). Tiny is <b>SOTA</b> on Chinese single-tag PCER (17.23), on all three English single-tag metrics, and on all three English multi-tag metrics.</li>
-        <li>🌐 <b>Seven languages on a cloned voice; dialects on their own call.</b> Chinese and English use the cloning task; German, Spanish, French, Korean and Japanese use the multilingual task. One language per call, from a reference clip. Sichuanese and Cantonese are a separate dialect task on a reference voice, with no target-language setting, and that call does not take emotion, speed or tags. <b>SOTA</b> German (0.325%) and Spanish (0.971%) WER (tiny); <b>SOTA</b> Sichuanese Easy CER (2.27%, 0.5b) and Hard CER (3.11%, tiny), and <b>SOTA</b> Sichuanese accuracy on both sets (tiny, 86.09% / 88.94%); <b>SOTA</b> Cantonese Base CER (6.15%) and dialect accuracy (98.00%) on WSYue-TTS-eval-Base (0.5b).</li>
-        <li>🎚️ <b>Control when it matters.</b> Emotion is one task (<code>高兴</code>, <code>悲伤</code>, <code>愤怒</code>, <code>恐惧</code>, <code>厌恶</code>, <code>惊讶</code>, <code>中性</code>). Speed, pitch and volume are a different task and are set together (<code>慢速</code> / <code>中速</code> / <code>快速</code>, pitch and volume <code>低</code> / <code>中</code> / <code>高</code>). Neither task takes a target language, a dialect, tags, or a designed or built-in voice. 0.5b is <b>SOTA</b> on average attribute accuracy (93.30%) and pitch accuracy (86.00%), and <b>#2</b> on speed (99.00%). Tiny is <b>SOTA</b> on WER (0.274%) and SIM (0.742) in that same setting. On CV3 emotion, tiny is <b>SOTA</b> on text-related Happy (98%, tied) and Sad (82%), and 0.5b on Angry (94%); tiny's 74.00% average ranks <b>#2</b>.</li>
-        <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. Podcast does not take a target language, emotion, dialect or tags. <b>SOTA</b> 2.03% CER on the podcast benchmark (tiny), with cpSIM 0.561 at <b>#2</b>.</li>
+        <li>🌐 <b>Seven languages on a cloned voice; dialects on their own call.</b> Chinese and English use the cloning task; German, Spanish, French, Korean and Japanese use the multilingual task. One language per call, from a reference clip. Sichuanese and Cantonese are a separate dialect task on a reference voice, with no target-language setting, and that call does not take emotion, speed or tags. Tiny is <b>SOTA</b> on German (0.325%) and Spanish (0.971%) WER, Sichuanese Hard CER (3.11%) and Sichuanese Easy accuracy (86.09%); 0.5b is <b>SOTA</b> on Cantonese Base CER (6.15%) and dialect accuracy (98.00%) on WSYue-TTS-eval-Base.</li>
+        <li>🎚️ <b>Control when it matters.</b> Emotion is one task (<code>高兴</code>, <code>悲伤</code>, <code>愤怒</code>, <code>恐惧</code>, <code>厌恶</code>, <code>惊讶</code>, <code>中性</code>). Speed, pitch and volume are a different task and are set together (<code>慢速</code> / <code>中速</code> / <code>快速</code>, pitch and volume <code>低</code> / <code>中</code> / <code>高</code>). Neither task takes a target language, a dialect, tags, or a designed or built-in voice. 0.5b leads the compared models on average attribute accuracy (93.30%) and pitch accuracy (86.00%) and ranks <b>#2</b> on speed (99.00%); tiny leads on WER (0.274%) and SIM (0.742) in that same setting. On CV3 emotion, tiny ties for <b>SOTA</b> on text-related Happy (98%) and 0.5b is <b>SOTA</b> on text-related Angry (94%); tiny's 74.00% average ranks <b>#2</b>. On the harder CV3N set, tiny is <b>SOTA</b> on both Sad subsets.</li>
+        <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. Podcast does not take a target language, emotion, dialect or tags. Its 2.03% CER ranks <b>#1</b> and its cpSIM 0.561 ranks <b>#2</b> among the compared podcast systems.</li>
       </ul>
       <p>
-        Two variants: <b>Ming-3.0-tts-0.5b</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, an 8B-A1B mixture of experts with 1B active, built on Ling V3. Both cover every ability above except podcast, which is tiny only; both are benchmarked side by side in the repository README.
+        Two variants: <b>Ming-3.0-tts-0.5b</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, a mixture of experts with 7.9B total and 1.3B active parameters, built on Ling V3. Both cover every ability above except podcast, which is tiny only; both are benchmarked side by side in the repository README.
       </p>
     </div>
   </div>
@@ -82,11 +86,36 @@
 <section class="section" id="benchmarks">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Benchmarks</h2>
+    <h3 class="title is-5">Artificial Analysis leaderboards</h3>
+    <div class="content has-text-justified">
+      <p>
+        Independent evaluations on <a href="https://artificialanalysis.ai/text-to-speech">Artificial Analysis</a>,
+        as of October 2026. Ranks change as new models are added.
+      </p>
+    </div>
+    <div class="table-wrap leaderboard-wrap">
+      <table class="table is-bordered is-fullwidth demo leaderboard">
+        <thead><tr><th>Leaderboard</th><th>Setting</th><th>Ming-3.0-tts</th><th>Rank</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice">Controlled Voice</a></td><td>Arena preference Elo; every model clones the same 8 voices (4 US, 4 UK)</td><td class="num">1069</td><td><b>#1 open-weights</b> · #13 overall</td></tr>
+          <tr><td><a href="https://artificialanalysis.ai/text-to-speech">Pronunciation Robustness</a></td><td>Share of highlighted spans in English text that human reviewers judged correctly pronounced</td><td class="num">93.2%</td><td><b>#1 overall</b></td></tr>
+          <tr><td><a href="https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice">Provider Voice</a></td><td>Arena preference Elo; each model uses its own native voices</td><td class="num">1188</td><td><b>#3 open-weights</b> · #17 overall</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        Within Pronunciation Robustness, Ming-3.0-tts also ranks <b>#1</b> on Expanding Shorthand (text
+        normalization, 96.5%) and Preserving Exact Sequences (sequence fidelity, 90.6%).
+      </p>
+    </div>
+    <h3 class="title is-5">Open benchmarks</h3>
     <div class="content has-text-justified">
       <p>
         Content accuracy and speaker similarity on Chinese, English and the five new languages, then every
-        control benchmark, both variants against the systems compared. Full tables, per-metric industry
-        ranks and the known limitations are in the
+        control benchmark, both variants against the systems compared. Ranks in this post are computed per
+        metric among the open-source models listed in the README tables. Full tables, notes and the known
+        limitations are in the
         <a href="https://github.com/inclusionAI/Ming-3.0-tts#performance">repository README</a>.
       </p>
     </div>
