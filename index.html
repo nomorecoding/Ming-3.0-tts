@@ -3,143 +3,388 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ming-3.0-tts: multilingual speech synthesis with paralinguistic and free-form control. One model, many ways to shape speech.">
   <title>Ming-3.0-tts: Multilingual Speech Synthesis with Paralinguistic and Free-form Control</title>
+  <meta name="description" content="Ming-3.0-tts: multilingual speech synthesis with paralinguistic and free-form control. One model, many ways to shape speech.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ming-3.0-tts">
+  <meta property="og:description" content="Multilingual speech synthesis with paralinguistic and free-form control. One model, many ways to shape speech.">
+  <meta property="og:image" content="https://nomorecoding.github.io/Ming-3.0-tts/static/images/posters/tts11.jpg">
+  <meta name="theme-color" content="#0c0e1c">
   <link rel="icon" type="image/png" href="static/images/ant-bailing.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preload" href="static/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="static/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="static/css/index.css?v=20261019">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop has-text-centered">
-      <img src="static/images/ant-bailing.png" class="logo" alt="Ming logo">
-      <h1 class="title is-2 publication-title">Ming-3.0-tts: Multilingual Speech Synthesis with Paralinguistic and Free-form Control</h1>
-      <p class="tagline">One model, many ways to shape speech.</p>
-      <p class="authors">Inclusion AI, Ant Group</p>
-      <p class="highlight">🏆 <a href="#artificial-analysis-leaderboards">Artificial Analysis</a>, October 2026:
-        <span><b>1st among open-weights models</b> on Controlled Voice</span> ·
-        <span><b>1st overall</b> on Pronunciation Robustness</span> ·
-        <span><b>3rd among open-weights models</b> on Provider Voice</span></p>
-      <div class="buttons is-centered links">
-        <a class="button is-dark is-rounded" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
-        <a class="button is-dark is-rounded" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">🤗 Hugging Face</a>
-        <a class="button is-dark is-rounded" href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">🤖 ModelScope</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><img src="static/images/ant-bailing.png" alt="" width="20" height="24"><span>Ming-3.0-tts</span></a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#abilities">Abilities</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#listen">Listen</a>
+      <a href="#benchmarks">Benchmarks</a>
+      <a href="#get-started">Get started</a>
+    </nav>
+    <a class="nav-cta" href="https://github.com/inclusionAI/Ming-3.0-tts">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Inclusion AI · Ant Group</p>
+      <h1>Ming-3.0-tts</h1>
+      <p class="hero-sub">Multilingual speech synthesis with paralinguistic and free-form control.</p>
+      <p class="hero-tag">One model, many ways to shape speech.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
+        <a class="btn btn-ghost" href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a>
+        <a class="btn btn-ghost" href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>
+      </div>
+    </div>
+
+    <figure class="hero-card">
+      <p class="label">Freeform instruction</p>
+      <p class="hero-instruction">Perform this as a mysterious fantasy narrator with a low pitch and dramatic pauses.</p>
+      <blockquote class="hero-line">Beyond the northern ridge lies a city that vanished from every map.</blockquote>
+      <div class="player player-lg player-dark" data-src="static/audio/freeform/fantasy_narrator.mp3" data-title="Freeform sample: fantasy narrator"></div>
+      <figcaption>Generated by Ming-3.0-tts · <a href="#listen" data-tab="freeform">More samples</a></figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <div class="aa-strip">
+      <div class="aa-head">
+        <span>Artificial Analysis leaderboards · October 2026</span>
+        <a href="#artificial-analysis-leaderboards">Details</a>
+      </div>
+      <div class="aa-items">
+        <a class="aa-item" href="https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice">
+          <span class="aa-rank">1<span>st</span></span>
+          <span class="aa-text">
+            <span class="aa-scope">among open-weights models</span>
+            <span class="aa-board">Controlled Voice</span>
+            <span class="aa-meta">Elo 1069 · 13th overall</span>
+          </span>
+        </a>
+        <a class="aa-item" href="https://artificialanalysis.ai/text-to-speech">
+          <span class="aa-rank">1<span>st</span></span>
+          <span class="aa-text">
+            <span class="aa-scope">overall</span>
+            <span class="aa-board">Pronunciation Robustness</span>
+            <span class="aa-meta">93.2% judged correctly pronounced</span>
+          </span>
+        </a>
+        <a class="aa-item" href="https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice">
+          <span class="aa-rank">3<span>rd</span></span>
+          <span class="aa-text">
+            <span class="aa-scope">among open-weights models</span>
+            <span class="aa-board">Provider Voice</span>
+            <span class="aa-meta">Elo 1188 · 17th overall</span>
+          </span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Featured Abilities</h2>
-    <div class="content has-text-justified">
-      <p>
-        Getting a line of speech right is rarely just a matter of reading the words. Which voice is this
-        character? How should the line land? Where does it pause, laugh or sigh? Which language is it, or which
-        dialect? Today those answers are scattered across tools: hunt for a reference clip that is close enough,
-        nudge emotion and pace, splice a laugh in during post, then re-check pronunciation and timbre every time
-        the language changes. Ming-3.0-tts brings voice, delivery, non-verbal sounds, language, dialect and
-        attribute controls into one speech-generation framework. Each generation is one task; the controls below
-        are not combined in a single call.
-      </p>
-      <ul class="abilities">
-        <li>🎨 <b>Start from the character, not from a clip.</b> No reference recording that sounds right? Describe the voice: age, texture, temperament, role. Voice Design renders it with no audio at all. Or pick one of 479 built-in Chinese voices and five English ones, also with no audio. Or clone from a short reference. These are three separate calls: a description, a built-in name and a reference clip are not combined, and none of these calls also takes emotion, dialect, speed or a freeform instruction. On InstructTTSEval-ZH, tiny ranks <b>2nd</b> among the compared models on average ACC (75.37%), APS (85.10%) and DSD (79.90%).</li>
-        <li>🎬 <b>Direct the line in plain words.</b> <i>"Like telling an old friend about the past: warm, close, a little nostalgic."</i> Freeform is its own task: one instruction, not a voice-design description and not a built-in voice. On 0.5b the instruction can follow a reference clip or, with no reference, choose the voice; tiny always needs the reference clip. It does not take emotion, dialect, speed, pitch, volume or inline tags.</li>
-        <li>💬 <b>Laughs and sighs belong in the script.</b> Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. They belong to Chinese or English cloning: written where they happen, performed in that reference speaker's voice. They are not accepted on voice design, built-in voices, dialect, emotion, attribute control, or the five new languages. On NVBench, 0.5b is <b>SOTA</b> on Chinese single-tag CER (2.70), and the two variants <b>tie for SOTA</b> on Chinese single-tag OCER (3.20). Tiny is <b>SOTA</b> on Chinese single-tag PCER (17.23), on all three English single-tag metrics, and on all three English multi-tag metrics.</li>
-        <li>🌐 <b>Seven languages on a cloned voice; dialects on their own call.</b> Chinese and English use the cloning task; German, Spanish, French, Korean and Japanese use the multilingual task. One language per call, from a reference clip. Sichuanese and Cantonese are a separate dialect task on a reference voice, with no target-language setting, and that call does not take emotion, speed or tags. Tiny is <b>SOTA</b> on German (0.325%) and Spanish (0.971%) WER, Sichuanese Hard CER (3.11%) and Sichuanese Easy accuracy (86.09%); 0.5b is <b>SOTA</b> on Cantonese Base CER (6.15%) and dialect accuracy (98.00%) on WSYue-TTS-eval-Base.</li>
-        <li>🎚️ <b>Control when it matters.</b> Emotion is one task (<code>高兴</code>, <code>悲伤</code>, <code>愤怒</code>, <code>恐惧</code>, <code>厌恶</code>, <code>惊讶</code>, <code>中性</code>). Speed, pitch and volume are a different task and are set together (<code>慢速</code> / <code>中速</code> / <code>快速</code>, pitch and volume <code>低</code> / <code>中</code> / <code>高</code>). Neither task takes a target language, a dialect, tags, or a designed or built-in voice. 0.5b leads the compared models on average attribute accuracy (93.30%) and pitch accuracy (86.00%) and ranks <b>2nd</b> on speed (99.00%); tiny leads on WER (0.274%) and SIM (0.742) in that same setting. On CV3 emotion, tiny ties for <b>SOTA</b> on text-related Happy (98%) and 0.5b is <b>SOTA</b> on text-related Angry (94%); tiny's 74.00% average ranks <b>2nd</b>. On the harder CV3N set, tiny is <b>SOTA</b> on both Sad subsets.</li>
-        <li>🎙️ <b>A whole conversation, not stitched lines.</b> Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included. Podcast does not take a target language, emotion, dialect or tags. Its 2.03% CER ranks <b>1st</b> and its cpSIM 0.561 ranks <b>2nd</b> among the compared podcast systems.</li>
-      </ul>
-      <p>
-        Two variants: <b>Ming-3.0-tts-0.5b</b>, dense and built on Qwen2.5-0.5B; and <b>Ming-3.0-tts-tiny</b>, a mixture of experts with 7.9B total and 1.3B active parameters, built on Ling V3. Both cover every ability above except podcast, which is tiny only; both are benchmarked side by side in the repository README.
-      </p>
+<section class="video-band" id="video" aria-label="Demo video">
+  <div class="wrap">
+    <div class="video-frame">
+      <video preload="none" playsinline poster="static/images/posters/tts11.jpg" src="static/videos/tts11.mp4"></video>
+      <button class="video-play" type="button" aria-label="Play the demo video">
+        <span class="video-play-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="video-play-text">Watch the demo <span>3:18</span></span>
+      </button>
     </div>
   </div>
 </section>
 
-<section class="section" id="video">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Demo Video</h2>
-    <figure class="demo-video"><video controls preload="none" playsinline poster="static/images/posters/tts11.jpg" src="static/videos/tts11.mp4"></video></figure>
+<section class="section" id="abilities">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="kicker"><span>01</span>Abilities</p>
+      <h2>One framework. <em>One task per call.</em></h2>
+      <p class="lead">
+        Getting a line of speech right is rarely just a matter of reading the words. Which voice is this
+        character? How should the line land? Where does it pause, laugh or sigh? Which language is it, or which
+        dialect? Ming-3.0-tts brings voice, delivery, non-verbal sounds, language, dialect and attribute controls
+        into one speech-generation framework. Each generation is one task; the controls below are not combined in
+        a single call.
+      </p>
+    </header>
+
+    <div class="abilities">
+      <article class="ability reveal">
+        <span class="ability-no">01</span>
+        <h3>Start from the character, not from a clip</h3>
+        <p>No reference recording that sounds right? Describe the voice by age, texture, temperament and role, and Voice Design renders it with no audio at all. Or pick one of 479 built-in Chinese voices and five English ones, or clone from a short reference.</p>
+        <p class="ability-rule">A description, a built-in name and a reference clip are three separate calls; none of them also takes emotion, dialect, speed or a freeform instruction.</p>
+        <dl class="ability-stat"><dt>InstructTTSEval-ZH</dt><dd>tiny ranks <b>2nd</b> among the compared models on average ACC (75.37%), APS (85.10%) and DSD (79.90%).</dd></dl>
+        <a class="ability-link" href="#listen" data-tab="voice-design">Listen</a>
+      </article>
+
+      <article class="ability reveal">
+        <span class="ability-no">02</span>
+        <h3>Direct the line in plain words</h3>
+        <p>Freeform is its own task: one instruction, not a voice-design description and not a built-in voice. On 0.5b the instruction can follow a reference clip or, with no reference, choose the voice; tiny always needs the reference clip.</p>
+        <p class="ability-rule">Does not take emotion, dialect, speed, pitch, volume or inline tags.</p>
+        <blockquote class="ability-quote">“Like telling an old friend about the past: warm, close, a little nostalgic.”</blockquote>
+        <a class="ability-link" href="#listen" data-tab="freeform">Listen</a>
+      </article>
+
+      <article class="ability reveal">
+        <span class="ability-no">03</span>
+        <h3>Laughs and sighs belong in the script</h3>
+        <p>Fourteen inline tags cover breath, cough, sigh, laughter, hesitation, surprise, and question and confirmation particles. Written where they happen, they are performed in the reference speaker's voice, in Chinese or English cloning.</p>
+        <p class="ability-rule">Not accepted on voice design, built-in voices, dialect, emotion, attribute control or the five new languages.</p>
+        <dl class="ability-stat"><dt>NVBench</dt><dd>Together the two variants are <b>SOTA</b> on all six single-tag metrics; tiny is <b>SOTA</b> on all three English multi-tag metrics.</dd></dl>
+        <a class="ability-link" href="#listen" data-tab="paralinguistic">Listen</a>
+      </article>
+
+      <article class="ability reveal">
+        <span class="ability-no">04</span>
+        <h3>Seven languages on a cloned voice, dialects on their own call</h3>
+        <p>Chinese and English use the cloning task; German, Spanish, French, Korean and Japanese use the multilingual task, one language per call from a reference clip. Sichuanese and Cantonese are a separate dialect task on a reference voice.</p>
+        <p class="ability-rule">The dialect task has no target-language setting and does not take emotion, speed or tags.</p>
+        <dl class="ability-stat"><dt>Multilingual and dialect</dt><dd>tiny is <b>SOTA</b> on German (0.325%) and Spanish (0.971%) WER, Sichuanese Hard CER (3.11%) and Easy accuracy (86.09%); 0.5b is <b>SOTA</b> on Cantonese Base CER (6.15%) and dialect accuracy (98.00%).</dd></dl>
+        <a class="ability-link" href="#listen" data-tab="cross-lingual">Listen</a>
+      </article>
+
+      <article class="ability reveal">
+        <span class="ability-no">05</span>
+        <h3>Control when it matters</h3>
+        <p>Emotion is one task (<span lang="zh">高兴, 悲伤, 愤怒, 恐惧, 厌恶, 惊讶, 中性</span>). Speed, pitch and volume are a different task and are set together (<span lang="zh">慢速 / 中速 / 快速</span>; pitch and volume <span lang="zh">低 / 中 / 高</span>).</p>
+        <p class="ability-rule">Neither task takes a target language, a dialect, tags, or a designed or built-in voice.</p>
+        <dl class="ability-stat">
+          <dt>Attribute control</dt><dd>0.5b leads the compared models on average accuracy (93.30%) and pitch (86.00%); tiny leads on WER (0.274%) and SIM (0.742).</dd>
+          <dt>CV3 and CV3N emotion</dt><dd>tiny ties for <b>SOTA</b> on text-related Happy (98%) and 0.5b is <b>SOTA</b> on text-related Angry (94%); on CV3N, tiny is <b>SOTA</b> on both Sad subsets.</dd>
+        </dl>
+        <a class="ability-link" href="#listen" data-tab="emotion">Listen</a>
+      </article>
+
+      <article class="ability reveal">
+        <span class="ability-no">06</span>
+        <h3>A whole conversation, not stitched lines</h3>
+        <p>Give tiny one short reference per speaker and a <code>speaker_1:</code> / <code>speaker_2:</code> script, and it performs the dialogue in one pass, turn-taking included.</p>
+        <p class="ability-rule">Podcast is tiny only and does not take a target language, emotion, dialect or tags.</p>
+        <dl class="ability-stat"><dt>Podcast</dt><dd>CER 2.03% ranks <b>1st</b> and cpSIM 0.561 ranks <b>2nd</b> among the compared podcast systems.</dd></dl>
+      </article>
+    </div>
+
+    <div class="variants reveal">
+      <article class="variant">
+        <p class="label">Dense</p>
+        <h3>Ming-3.0-tts-0.5b</h3>
+        <dl class="specs">
+          <div><dt>Backbone</dt><dd>Qwen2.5-0.5B</dd></div>
+          <div><dt>Abilities</dt><dd>Every ability above except podcast</dd></div>
+        </dl>
+        <p class="variant-links">
+          <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a>
+          <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>
+        </p>
+      </article>
+      <article class="variant">
+        <p class="label">Mixture of experts</p>
+        <h3>Ming-3.0-tts-tiny</h3>
+        <dl class="specs">
+          <div><dt>Backbone</dt><dd>Ling V3</dd></div>
+          <div><dt>Parameters</dt><dd>7.9B total · 1.3B active</dd></div>
+          <div><dt>Abilities</dt><dd>Every ability above, including podcast</dd></div>
+        </dl>
+        <p class="variant-links">
+          <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny">Hugging Face</a>
+          <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-tiny">ModelScope</a>
+        </p>
+      </article>
+    </div>
+    <p class="fine reveal">Both variants are benchmarked side by side in the <a href="https://github.com/inclusionAI/Ming-3.0-tts#performance">repository README</a>.</p>
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Under the Hood: One Sequence, Many Controls</h2>
-    <div class="content has-text-justified">
-      <p>
+<section class="section section-alt" id="architecture">
+  <div class="wrap arch-grid">
+    <header class="section-head reveal">
+      <p class="kicker"><span>02</span>Architecture</p>
+      <h2>One sequence, <em>many controls.</em></h2>
+      <p class="lead">Text and task-specific control tokens condition a language model with a DiT patch head and an audio tokenizer. Both models share this generation framework.</p>
+      <p class="body">
         Target language, a freeform instruction, paralinguistic tags and structured controls share one prompt
         format: they are ordinary tokens next to the text. A single request fills the slots for one task. Voice
         design, a built-in voice, cloning, freeform, emotion, speed/pitch/volume, dialect, paralinguistic tags
-        and podcast are not combined. The public APIs expose that split, shown in the <a
-        href="https://github.com/inclusionAI/Ming-3.0-tts#cookbook">Cookbook</a>.
+        and podcast are not combined. The public APIs expose that split, shown in the
+        <a href="https://github.com/inclusionAI/Ming-3.0-tts#cookbook">Cookbook</a>.
       </p>
-    </div>
-    <figure class="figure"><img src="static/images/ming-3.0-tts.png" alt="Ming-3.0-tts architecture"></figure>
+    </header>
+    <figure class="figure-card arch-figure reveal">
+      <button class="zoom" type="button" data-zoom aria-label="Enlarge the architecture diagram">
+        <img src="static/images/ming-3.0-tts.png" alt="Ming-3.0-tts architecture" width="1240" height="682" loading="lazy" decoding="async">
+      </button>
+    </figure>
   </div>
 </section>
 
-<section class="section" id="benchmarks">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Benchmarks</h2>
-    <h3 class="title is-5" id="artificial-analysis-leaderboards">Artificial Analysis leaderboards</h3>
-    <div class="content has-text-justified">
-      <p>
-        Independent evaluations on <a href="https://artificialanalysis.ai/text-to-speech">Artificial Analysis</a>,
-        as of October 2026. Ranks change as new models are added.
-      </p>
+<section class="section" id="listen">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="kicker"><span>03</span>Listen</p>
+      <h2>Hear it, <em>task by task.</em></h2>
+      <p class="lead">Samples from the release demo set. Each one is a single call to one task, with its text and controls shown as given.</p>
+    </header>
+    <div class="listen-grid reveal">
+      <div class="tabs" role="tablist" aria-label="Sample tasks" id="tabs"></div>
+      <div id="panels"></div>
     </div>
-    <div class="table-wrap leaderboard-wrap">
-      <table class="table is-bordered is-fullwidth demo leaderboard">
-        <thead><tr><th>Leaderboard</th><th>Setting</th><th>Ming-3.0-tts</th><th>Rank</th></tr></thead>
-        <tbody>
-          <tr><td><a href="https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice">Controlled Voice</a></td><td>Arena preference Elo; every model clones the same 8 voices (4 US, 4 UK)</td><td class="num">1069</td><td><b>1st among open-weights</b> · 13th overall</td></tr>
-          <tr><td><a href="https://artificialanalysis.ai/text-to-speech">Pronunciation Robustness</a></td><td>Share of highlighted spans in English text that human reviewers judged correctly pronounced</td><td class="num">93.2%</td><td><b>1st overall</b></td></tr>
-          <tr><td><a href="https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice">Provider Voice</a></td><td>Arena preference Elo; each model uses its own native voices</td><td class="num">1188</td><td><b>3rd among open-weights</b> · 17th overall</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <figure class="figure"><img src="static/images/aa_leaderboards.png" alt="Artificial Analysis leaderboards: Controlled Voice and Provider Voice (open weights), Pronunciation Robustness"></figure>
-    <div class="content has-text-justified">
-      <p>
-        Within Pronunciation Robustness, Ming-3.0-tts also ranks <b>1st</b> on Expanding Shorthand (text
-        normalization, 96.5%) and Preserving Exact Sequences (sequence fidelity, 90.6%).
-      </p>
-    </div>
-    <h3 class="title is-5">Open benchmarks</h3>
-    <div class="content has-text-justified">
-      <p>
-        Content accuracy and speaker similarity on Chinese, English and the five new languages, then every
-        control benchmark, both variants against the systems compared. Ranks in this post are computed per
-        metric among the open-source models listed in the README tables. Full tables, notes and the known
-        limitations are in the
-        <a href="https://github.com/inclusionAI/Ming-3.0-tts#performance">repository README</a>.
-      </p>
-    </div>
-    <figure class="figure"><img src="static/images/benchmark_basic.png" alt="Basic capability: WER, CER and SIM"></figure>
-    <figure class="figure"><img src="static/images/benchmark_control.png" alt="Controllability benchmarks"></figure>
+    <noscript><p class="fine">The samples need JavaScript to play.</p></noscript>
   </div>
 </section>
 
-<div id="demos"></div>
+<section class="section section-alt" id="benchmarks">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="kicker"><span>04</span>Benchmarks</p>
+      <h2>Measured independently, <em>and in the open.</em></h2>
+    </header>
+
+    <div class="bench" id="artificial-analysis-leaderboards">
+      <div class="bench-intro reveal">
+        <h3>Artificial Analysis leaderboards</h3>
+        <p>Independent evaluations on <a href="https://artificialanalysis.ai/text-to-speech">Artificial Analysis</a>, as of October 2026. Ranks change as new models are added.</p>
+      </div>
+      <div class="lb reveal" role="table" aria-label="Artificial Analysis results">
+        <div class="lb-row lb-head" role="row">
+          <span role="columnheader">Leaderboard</span><span role="columnheader">Setting</span><span role="columnheader">Ming-3.0-tts</span><span role="columnheader">Rank</span>
+        </div>
+        <div class="lb-row" role="row">
+          <a role="cell" class="lb-name" href="https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice">Controlled Voice</a>
+          <span role="cell" class="lb-setting">Arena preference Elo; every model clones the same 8 voices (4 US, 4 UK)</span>
+          <span role="cell" class="lb-score">1069</span>
+          <span role="cell" class="lb-rank"><b>1st among open-weights</b> · 13th overall</span>
+        </div>
+        <div class="lb-row" role="row">
+          <a role="cell" class="lb-name" href="https://artificialanalysis.ai/text-to-speech">Pronunciation Robustness</a>
+          <span role="cell" class="lb-setting">Share of highlighted spans in English text that human reviewers judged correctly pronounced</span>
+          <span role="cell" class="lb-score">93.2%</span>
+          <span role="cell" class="lb-rank"><b>1st overall</b></span>
+        </div>
+        <div class="lb-row" role="row">
+          <a role="cell" class="lb-name" href="https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice">Provider Voice</a>
+          <span role="cell" class="lb-setting">Arena preference Elo; each model uses its own native voices</span>
+          <span role="cell" class="lb-score">1188</span>
+          <span role="cell" class="lb-rank"><b>3rd among open-weights</b> · 17th overall</span>
+        </div>
+      </div>
+      <figure class="figure-card reveal">
+        <button class="zoom" type="button" data-zoom aria-label="Enlarge the Artificial Analysis leaderboards">
+          <img src="static/images/aa_leaderboards.png" alt="Artificial Analysis leaderboards: Controlled Voice and Provider Voice (open weights), Pronunciation Robustness" width="2400" height="1216" loading="lazy" decoding="async">
+        </button>
+      </figure>
+      <p class="fine reveal">Within Pronunciation Robustness, Ming-3.0-tts also ranks <b>1st</b> on Expanding Shorthand (text normalization, 96.5%) and Preserving Exact Sequences (sequence fidelity, 90.6%).</p>
+    </div>
+
+    <div class="bench">
+      <div class="bench-intro reveal">
+        <h3>Open benchmarks</h3>
+        <p>
+          Content accuracy and speaker similarity on Chinese, English and the five new languages, then every
+          control benchmark, both variants against the systems compared. Ranks in this post are computed per
+          metric among the open-source models listed in the README tables. Full tables, notes and the known
+          limitations are in the <a href="https://github.com/inclusionAI/Ming-3.0-tts#performance">repository README</a>.
+        </p>
+      </div>
+      <div class="figure-pair">
+        <figure class="figure-card reveal">
+          <button class="zoom" type="button" data-zoom aria-label="Enlarge the basic capability chart">
+            <img src="static/images/benchmark_basic.png" alt="Basic capability: WER, CER and SIM" width="3840" height="2160" loading="lazy" decoding="async">
+          </button>
+          <figcaption>Basic capability · WER, CER and SIM</figcaption>
+        </figure>
+        <figure class="figure-card reveal">
+          <button class="zoom" type="button" data-zoom aria-label="Enlarge the controllability chart">
+            <img src="static/images/benchmark_control.png" alt="Controllability benchmarks" width="3840" height="2160" loading="lazy" decoding="async">
+          </button>
+          <figcaption>Controllability benchmarks</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section get" id="get-started">
+  <div class="wrap get-grid">
+    <div class="reveal">
+      <p class="kicker"><span>05</span>Get started</p>
+      <h2>Run it <em>yourself.</em></h2>
+      <p class="lead">Weights for both variants are on Hugging Face and ModelScope. Installation, inference examples and the task cookbook are in the repository.</p>
+      <div class="get-actions">
+        <a class="btn btn-dark" href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
+        <a class="btn btn-outline" href="https://github.com/inclusionAI/Ming-3.0-tts#quick-start-">Quick Start</a>
+        <a class="btn btn-outline" href="https://github.com/inclusionAI/Ming-3.0-tts#cookbook">Cookbook</a>
+      </div>
+    </div>
+    <div class="code-card reveal">
+      <div class="code-head">
+        <div class="seg" role="group" aria-label="Variant">
+          <button type="button" data-variant="0.5b" aria-pressed="true">0.5b</button>
+          <button type="button" data-variant="tiny" aria-pressed="false">tiny</button>
+        </div>
+        <button class="copy" type="button" data-copy="download-code">Copy</button>
+      </div>
+      <pre><code id="download-code" data-template="pip install &quot;huggingface_hub[cli]&quot;
+hf download inclusionAI/Ming-3.0-tts-{v} \
+  --local-dir Ming-3.0-tts-{v}
+
+# In mainland China, ModelScope is usually faster
+pip install modelscope
+modelscope download --model inclusionAI/Ming-3.0-tts-{v} \
+  --local_dir Ming-3.0-tts-{v}">pip install "huggingface_hub[cli]"
+hf download inclusionAI/Ming-3.0-tts-0.5b \
+  --local-dir Ming-3.0-tts-0.5b
+
+# In mainland China, ModelScope is usually faster
+pip install modelscope
+modelscope download --model inclusionAI/Ming-3.0-tts-0.5b \
+  --local_dir Ming-3.0-tts-0.5b</code></pre>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <footer class="footer">
-  <div class="container is-max-desktop has-text-centered">
-    <p>
-      <a href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a> ·
-      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a> ·
-      <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>.
-      Benchmarks, limitations and the task cookbook are in the repository README.
-    </p>
-    <p class="credit">Page layout adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> template.</p>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="#top"><img src="static/images/ant-bailing.png" alt="" width="20" height="24"><span>Ming-3.0-tts</span></a>
+      <p>Inclusion AI, Ant Group</p>
+    </div>
+    <p class="footer-note">Voice cloning and built-in character voices are provided for research and legitimate creative use. Do not use them to impersonate a real person without consent, to deceive, or for any illegal purpose. Benchmarks, limitations and the task cookbook are in the repository README.</p>
+    <nav class="footer-links" aria-label="Project links">
+      <a href="https://github.com/inclusionAI/Ming-3.0-tts">GitHub</a>
+      <a href="https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5b">Hugging Face</a>
+      <a href="https://modelscope.cn/models/inclusionAI/Ming-3.0-tts-0.5b">ModelScope</a>
+    </nav>
   </div>
 </footer>
 
-<script src="static/js/examples.js"></script>
-<script src="static/js/index.js"></script>
+<dialog class="zoom-dialog" id="zoom-dialog" aria-label="Enlarged figure">
+  <button class="zoom-close" type="button" aria-label="Close">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+  <img alt="">
+</dialog>
+
+<script src="static/js/examples.js?v=20261019"></script>
+<script src="static/js/peaks.js?v=20261019"></script>
+<script src="static/js/index.js?v=20261019"></script>
 </body>
 </html>
