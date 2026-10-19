@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="static/images/ant-bailing.png">
   <link rel="preload" href="static/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="static/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="static/css/index.css?v=2026101907">
+  <link rel="stylesheet" href="static/css/index.css?v=2026101908">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -23,6 +23,7 @@
   <div class="wrap nav-inner">
     <a class="brand" href="#top"><img src="static/images/ant-bailing.png" alt="" width="20" height="24"><span>Ming-3.0-tts</span></a>
     <nav class="nav-links" aria-label="Sections">
+      <a href="#architecture">Architecture</a>
       <a href="#voices">Voices</a>
       <a href="#director">Director mode</a>
       <a href="#languages">Languages</a>
@@ -102,10 +103,25 @@
   </div>
 </section>
 
+<section class="section" id="architecture">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="kicker"><span>01</span>Architecture</p>
+      <h2>One generation framework for both models.</h2>
+      <p class="lead">Text and task-specific control tokens condition a language model with a DiT patch head and an audio tokenizer. Capabilities use separate task modes, not arbitrary combinations.</p>
+    </header>
+    <figure class="figure-card arch-figure reveal">
+      <button class="zoom" type="button" data-zoom aria-label="Enlarge the architecture diagram">
+        <img src="static/images/ming-3.0-tts.png" alt="Ming-3.0-tts architecture" width="2544" height="1392" loading="lazy" decoding="async">
+      </button>
+    </figure>
+  </div>
+</section>
+
 <section class="section story" id="voices">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="kicker"><span>01</span>Voice design</p>
+      <p class="kicker"><span>02</span>Voice design</p>
       <h2>Describe a voice in words.</h2>
       <p class="lead">Audio stories, short-video narration and product assistants each need their own voice. Voice Design creates one from a text description; with a reference clip at hand, the model clones that voice instead.</p>
     </header>
@@ -117,7 +133,7 @@
 <section class="section story" id="director">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="kicker"><span>02</span>Director mode</p>
+      <p class="kicker"><span>03</span>Director mode</p>
       <h2>Direct each line: emotion, rhythm and stress.</h2>
       <p class="lead">Tell the model in plain language how a line should be performed: how the emotion shifts, which words to stress, how the rhythm goes. Listen, then adjust the direction or the line.</p>
     </header>
@@ -129,7 +145,7 @@
 <section class="section story" id="tags">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="kicker"><span>03</span>Paralinguistic tags</p>
+      <p class="kicker"><span>04</span>Paralinguistic tags</p>
       <h2>Laughs and sighs that show how a character feels.</h2>
       <p class="lead">A sigh before a line, or a short laugh halfway through it, tells listeners what state a character is in. Inline tags place the laugh, the sigh or the cough exactly where it belongs.</p>
     </header>
@@ -141,7 +157,7 @@
 <section class="section story" id="languages">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="kicker"><span>04</span>Languages and dialects</p>
+      <p class="kicker"><span>05</span>Languages and dialects</p>
       <h2>Seven languages and two dialects.</h2>
       <p class="lead">For international products and audio content, Ming-3.0-tts speaks Chinese, English, Japanese, Korean, French, German and Spanish. Below, one story in all seven, in two cloned voices. Given a reference clip in the same dialect, it also speaks Sichuanese and Cantonese.</p>
     </header>
@@ -154,7 +170,7 @@
 <section class="section" id="models">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="kicker"><span>05</span>Models</p>
+      <p class="kicker"><span>06</span>Models</p>
       <h2>Two models: 0.5b and tiny.</h2>
       <p class="lead">Both models are built for efficient inference. Weigh content length, expressive needs and compute budget when choosing.</p>
     </header>
@@ -186,19 +202,13 @@
         </p>
       </article>
     </div>
-    <figure class="figure-card model-figure reveal">
-      <button class="zoom" type="button" data-zoom aria-label="Enlarge the architecture diagram">
-        <img src="static/images/ming-3.0-tts.png" alt="Ming-3.0-tts architecture" width="2544" height="1392" loading="lazy" decoding="async">
-      </button>
-      <figcaption>Both models share this generation framework: text and task-specific control tokens condition a language model with a DiT patch head and an audio tokenizer.</figcaption>
-    </figure>
   </div>
 </section>
 
 <section class="section" id="benchmarks">
   <div class="wrap">
     <header class="section-head reveal" id="artificial-analysis-leaderboards">
-      <p class="kicker"><span>06</span>Benchmarks</p>
+      <p class="kicker"><span>07</span>Benchmarks</p>
       <h2>Strong quality at 0.5B parameters.</h2>
       <p class="lead">Ming-3.0-tts-0.5b on <a href="https://artificialanalysis.ai/text-to-speech">Artificial Analysis</a>, October 2026 (<a href="static/images/aa_leaderboards.png">as captured</a>). Ranks change as new models are added.</p>
     </header>
@@ -309,7 +319,7 @@
 <section class="section" id="listen">
   <div class="wrap">
     <header class="section-head reveal">
-      <p class="kicker"><span>07</span>Samples</p>
+      <p class="kicker"><span>08</span>Samples</p>
       <h2>All samples by task.</h2>
       <p class="lead">Each one is a single call to one task, with its text and controls as given.</p>
     </header>
@@ -384,8 +394,8 @@ modelscope download --model inclusionAI/Ming-3.0-tts-0.5b \
   <img alt="">
 </dialog>
 
-<script src="static/js/examples.js?v=2026101907"></script>
-<script src="static/js/peaks.js?v=2026101907"></script>
-<script src="static/js/index.js?v=2026101907"></script>
+<script src="static/js/examples.js?v=2026101908"></script>
+<script src="static/js/peaks.js?v=2026101908"></script>
+<script src="static/js/index.js?v=2026101908"></script>
 </body>
 </html>
